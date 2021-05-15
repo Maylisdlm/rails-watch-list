@@ -2,8 +2,10 @@
 
   <p><%= @list.name %></p>
   <% @list.bookmarks.each do |bookmark| %>
+    <%= image_tag bookmark.movie.poster_url, height: 300, width: 400, crop: :fill %>
     <p><%= bookmark.movie.title %></p>
     <p><%= bookmark.comment %></p>
+     <%= link_to "Remove this movie", bookmark_path(bookmark), class:"btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } %>
   <% end  %>
 
   <%= link_to "Back to Lists", lists_path, class: "btn btn-success" %>
